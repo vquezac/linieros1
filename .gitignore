@@ -1,0 +1,5 @@
+/public/storage
+/storage/*.key
+.env
+# Project exclude paths
+/vendor/
