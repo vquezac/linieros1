@@ -3,3 +3,4 @@
 .env
 # Project exclude paths
 /vendor/
+/.idea/

@@ -1,4 +1,3 @@
-{{dd($projects)}}
 @extends('layouts.admin')
 
 @section('main-content')
@@ -21,14 +20,14 @@
 
     <div class="row">
 
-        <div class="col-xl-12 col-md-6 mb-3">
+        <div class="col-xl-6 col-md-6 mb-3">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
 
-                    <form method="POST" action="{{ route('project.create') }}" autocomplete="off">
+                    <form method="POST" action="{{ route('project.store') }}" autocomplete="off">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                        <h6 class="heading-small text-muted mb-4">Inngreso de Nuevo Proyecto</h6>
+                        <h6 class="heading-small text-muted mb-4">Ingreso de Nuevo Proyecto</h6>
 
                         <div class="pl-lg-8">
                             <div class="row">
@@ -41,19 +40,20 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-lg-6">
+
+                                <div class="col-lg-6 col-md-6 mb-3">
+                                    <div class="form-group focused">
+                                        <label class="form-control-label" for="fecha_ini">Fecha Inicio</label><span class="small text-danger">*</span></label>
+                                        <input type="date" id="fecha_ini" class="form-control" name="fecha_ini" value="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6  col-md-6 mb-3">
                                     <div class="form-group">
                                         <label class="form-control-label" for="fecha_fin">Fecha Fin<span class="small text-danger">*</span></label>
-                                        <input type="email" id="fecha_fin" class="form-control" name="fecha_fin" placeholder="Fecha Final" value="">
+                                        <input type="date" id="fecha_fin" class="form-control" name="fecha_fin" value="">
                                     </div>
                                 </div>
 
-                                <div class="col-lg-6">
-                                    <div class="form-group focused">
-                                        <label class="form-control-label" for="fecha_ini">Fecha Inicio</label><span class="small text-danger">*</span></label>
-                                        <input type="date" id="fecha_ini" class="form-control" name="fecha_ini" placeholder="Fecha Inicial" value="">
-                                    </div>
-                                </div>
                             </div>
 
                             <div class="row">

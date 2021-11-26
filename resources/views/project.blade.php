@@ -1,37 +1,83 @@
-{{dd($projects)}}
 @extends('layouts.admin')
 
 @section('main-content')
-
-    <!-- Page Heading -->
-    @if (session('success'))
-    <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">
-        {{ session('success') }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
+    @if ($errors->any())
+        <div class="alert alert-danger border-left-danger" role="alert">
+            <ul class="pl-4 my-2">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
     @endif
 
     @if (session('status'))
-        <div class="alert alert-success border-left-success" role="alert">
+        <div class="alert alert-success">
             {{ session('status') }}
         </div>
     @endif
 
     <div class="row">
-
         <div class="col-lg-6 mb-4">
 
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Agregar Proyectos</h6>
+                    <h4 class=" float-left m-0 font-weight-bold text-primary">Proyectos</h4>
+                    <div class = "float-right mr-5"><a href="{{route('project.create')}}"><i class="fas fa-fb fa-plus"></i><span>Agregar</span></a></div>
                 </div>
                 <div class="card-body">
 
+                    <table class="table table-bordered table-striped table-hover yajra-datatable">
+                        <thead>
+                        <tr>
+                            <th>Nº</th>
+                            <th>Proyecto</th>
+                            <th>Fecha Inicial</th>
+                            <th>Fecha Final</th>
+                            <th>Estado</th>
+                            <th>Editar</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-
     </div>
+
+    <script>
+        $(function () {
+
+            var table = $('.yajra-datatable').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('project.list') }}",
+                rowReorder: {
+                    selector: 'td:nth-child(2)'
+                },
+                responsive: true,
+                columns: [
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                    {data: 'descripcion', name: 'descripcion'},
+                    {data: 'fecha_inicio', name: 'fecha_inicio'},
+                    {data: 'fecha_fin', name: 'fecha_fin'},
+                    {data: 'estado', name: 'estado'},
+                    {
+                        data: 'Accion', name: 'Editar',
+                        orderable: true,
+                        searchable: true
+                    },
+                ],
+                language: {
+                    url: 'https://cdn.datatables.net/plug-ins/1.11.3/i18n/es-cl.json'
+                },
+                dom    : 'Bfrtip',
+                buttons: {
+                    buttons:['csv', 'excel', 'pdf', 'print', 'reset', 'reload']
+                },
+            });
+        });
+    </script>
+
 @endsection

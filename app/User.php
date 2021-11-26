@@ -52,20 +52,6 @@ class User extends Authenticatable
         return "{$this->name} {$this->last_name}";
     }
 
-    /**
-     * Get the user's profile.
-     *
-     * @return int
-     */
-
-    public function getProfileAttribute(): ?int
-    {
-        if (is_null($this->profile)) {
-            return null;
-        }
-
-        return $this->profile;
-    }
 
     /**
      * Set the user's password.
@@ -79,7 +65,7 @@ class User extends Authenticatable
     }
 
     public function profile(){
-        return $this->hasOne(Profile::class);
+        return $this->belongsTo(Profile::class);
     }
 
     public function supervisor(){
