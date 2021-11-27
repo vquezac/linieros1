@@ -108,7 +108,7 @@ class ProjectController extends Controller
         $project= Project::all()->find($projects);
         $materials = Material::all();
         $sections = Section::all();
-        return view('projectEdit',compact('project'));
+        return view('projectEdit',compact('project', 'materials', 'sections'));
     }
 
     /**

@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project_Material extends Model
+class ProjectMaterial extends Model
 {
     use HasFactory;
 
@@ -18,6 +18,6 @@ class Project_Material extends Model
     }
 
     public function material(){
-        return $this->hasMany(Material::class);
+        return $this->belongsTo(Material::class);
     }
 }

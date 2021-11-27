@@ -11,7 +11,7 @@ class Profile extends Model
 
     public $timestamps = false;
 
-    public function user(){
+    public function users(){
         return $this->hasMany(User::class);
     }
 }

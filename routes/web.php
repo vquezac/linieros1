@@ -23,8 +23,9 @@ Route::get('projec/list', 'ProjectController@getProjects')->middleware('auth')->
 
 //MATERIAL
 Route::resource('material', 'MaterialController')->middleware('auth'); //perfil 99
-Route::resource('projectMaterial', 'ProjectMaterialController')->middleware('auth'); //perfil 4
 
+Route::resource('projectMaterial', 'ProjectMaterialController')->middleware('auth'); //perfil 4
+Route::get('projectmaterial/list', 'ProjectMaterialController@getProjectMaterials')->middleware('auth')->name('projectmaterial.list'); //filtrar para jefe projecto (5), supervisor (2)
 //CREW
 Route::resource('crew', 'CrewController')->middleware('auth'); // perfil >2
 
