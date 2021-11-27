@@ -9,6 +9,10 @@ class Section extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
+    // MODEL RELATIONS
+
     public function project(){
         return $this->hasOne(Project::class);
     }

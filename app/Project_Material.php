@@ -9,6 +9,10 @@ class Project_Material extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
+    // MODEL RELATIONS
+
     public function project(){
         return $this->belongsTo(Project::class);
     }

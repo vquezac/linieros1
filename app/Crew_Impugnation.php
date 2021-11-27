@@ -9,6 +9,8 @@ class Crew_Impugnation extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public function material()
     {
         return $this->belongsTo(Material::class);

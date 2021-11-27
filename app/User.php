@@ -64,6 +64,8 @@ class User extends Authenticatable
         $this->attributes['password'] = Hash::needsRehash($value) ? Hash::make($value) : $value;
     }
 
+    // MODEL RELATIONS
+
     public function profile(){
         return $this->belongsTo(Profile::class);
     }

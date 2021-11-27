@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Fusion_Splicer_Impugnation extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
 }

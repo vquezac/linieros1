@@ -7123,3 +7123,8 @@ eard\\www\\linieros\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Ht
 eard\\www\\linieros\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #58 {main}
 "} 
+[2021-11-26 21:28:57] local.ERROR: Debugbar exception: Route [debugbar.assets.css] not defined.  
+[2021-11-26 21:29:19] local.ERROR: Debugbar exception: Route [debugbar.assets.css] not defined.  
+[2021-11-26 21:34:48] local.ERROR: Debugbar exception: Route [debugbar.assets.css] not defined.  
+[2021-11-26 21:40:24] local.ERROR: Debugbar exception: Route [debugbar.assets.css] not defined.  
+[2021-11-26 21:41:17] local.ERROR: Debugbar exception: Route [debugbar.assets.css] not defined.  

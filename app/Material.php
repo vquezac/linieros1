@@ -9,6 +9,8 @@ class Material extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public function fusion_splicer_inpugnation(){
         return $this->hasMany(Fusion_Splicer_Impugnation::class);
     }
