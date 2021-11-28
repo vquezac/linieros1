@@ -23,11 +23,11 @@
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h4 class=" float-left m-0 font-weight-bold text-primary">Proyectos</h4>
-                    <div class = "float-right mr-5"><a href="{{route('project.create')}}"><i class="fas fa-fb fa-plus"></i><span>Agregar</span></a></div>
+                    <div class="float-right mr-5"><a href="{{route('project.create')}}"><i class="fas fa-fb fa-plus"></i><span>Agregar</span></a></div>
                 </div>
                 <div class="card-body">
 
-                    <table class="table table-bordered table-striped table-hover yajra-datatable">
+                    <table class="table table-bordered table-striped table-hover " id="tblproject">
                         <thead>
                         <tr>
                             <th>Nº</th>
@@ -41,6 +41,8 @@
                         <tbody>
                         </tbody>
                     </table>
+
+
                 </div>
             </div>
         </div>
@@ -48,8 +50,7 @@
 
     <script>
         $(function () {
-
-            var table = $('.yajra-datatable').DataTable({
+            var table = $('#tblproject').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: "{{ route('project.list') }}",
@@ -65,18 +66,25 @@
                     {data: 'estado', name: 'estado'},
                     {
                         data: 'Accion', name: 'Editar',
-                        orderable: true,
-                        searchable: true
+                        orderable: false,
+                        searchable: false
                     },
                 ],
                 language: {
                     url: 'https://cdn.datatables.net/plug-ins/1.11.3/i18n/es-cl.json'
                 },
-                dom    : 'Bfrtip',
+                dom: 'Bfrtip',
                 buttons: {
-                    buttons:['csv', 'excel', 'pdf', 'print', 'reset', 'reload']
+                    buttons: ['csv', 'excel', 'pdf', 'print', 'reset', 'reload']
                 },
             });
+
+            /*table.on('xhr', function (e, settings, json) {
+                console.log('Ajax event occurred. Returned e: ', e);
+                console.log('Ajax event occurred. Returned settings: ', settings);
+                console.log('Ajax event occurred. Returned data: ', json);
+
+            });*/
         });
     </script>
 

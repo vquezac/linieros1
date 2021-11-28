@@ -19,16 +19,22 @@ Route::get('/about', function () { return view('about');})->name('about');
 
 //PROYECTO
 Route::resource('project', 'ProjectController')->middleware('auth'); // free for all
-Route::get('projec/list', 'ProjectController@getProjects')->middleware('auth')->name('project.list'); //filtrar para jefe projecto (5), supervisor (2)
-
+Route::get('projecT/list', 'ProjectController@getProjects')->middleware('auth')->name('project.list'); //perfil 4,2
+//TRAMOS
+Route::resource('section', 'SectionController')->middleware('auth');
+Route::get('section/list/{id}','SectionController@getSections')->name('section/list/{id}');
 //MATERIAL
 Route::resource('material', 'MaterialController')->middleware('auth'); //perfil 99
 
-Route::resource('projectMaterial', 'ProjectMaterialController')->middleware('auth'); //perfil 4
-Route::get('projectmaterial/list', 'ProjectMaterialController@getProjectMaterials')->middleware('auth')->name('projectmaterial.list'); //filtrar para jefe projecto (5), supervisor (2)
+//PROJECTMATERIAL
+Route::resource('projectmaterial', 'ProjectMaterialController')->middleware('auth'); //perfil 4
+Route::get('projectmaterial/list/{id}', 'ProjectMaterialController@getProjectMaterials')->middleware('auth')->name('projectmaterial/list/{id}'); //perfil 5
+
 //CREW
 Route::resource('crew', 'CrewController')->middleware('auth'); // perfil >2
 
 //IMPUTACIONES
 Route::resource('impugnation', 'CrewImpugnationController')->middleware('auth'); //perfil 1, 2
+Route::get('impugnation/list/{id}', 'CrewImpugnationController@getCrewImpugnations')->middleware('auth')->name('impugnation/list/{id}'); //perfil 5
+
 Route::resource('FuserImpugnation', 'FusionSplicerImpugnationController')->middleware('auth'); //perfil3

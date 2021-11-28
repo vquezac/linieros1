@@ -12,6 +12,7 @@ class ProjectMaterial extends Model
     public $timestamps = false;
 
     // MODEL RELATIONS
+    protected $table = 'project_materials';
 
     public function project(){
         return $this->belongsTo(Project::class);

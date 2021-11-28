@@ -1,8 +1,5 @@
-
 @extends('layouts.admin')
-
 @section('main-content')
-
     @if ($errors->any())
         <div class="alert alert-danger border-left-danger" role="alert">
             <ul class="pl-4 my-2">
@@ -44,7 +41,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group focused">
                                         <label class="form-control-label" for="fecha_ini">Fecha Inicio</label><span class="small text-danger">*</span></label>
-                                        <input type="date" id="fecha_ini" class="form-control" name="fecha_ini" placeholder="Fecha Inicial" value="{{$project->fecha_ini}}" disabled> {{-- //TODO deshabilitado si estado != 0 --}}
+                                        <input type="date" id="fecha_ini" class="form-control" name="fecha_ini" placeholder="Fecha Inicial" value="{{$project->fecha_inicio}}" disabled> {{-- //TODO deshabilitado si estado != 0 --}}
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -64,7 +61,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Materiales (Estimados)</h6>
                 </div>
                 <div class="mt-1 ml-1 mr-1">
-                    <table class="table table-bordered table-striped table-hover yajra-datatable" id="tblmateriales">
+                    <table class="table table-bordered table-striped table-hover" id="tblmateriales">
                         <thead>
                         <tr>
                             <th>Codigo</th>
@@ -76,6 +73,7 @@
                         <tbody>
                         </tbody>
                     </table>
+
                 </div>
                 @if(auth()->user()->profile_id>=4)
                     <div class="card-body">
@@ -116,12 +114,29 @@
                     </div>
                 @endif
             </div>
-            {{--SECCIONES--}}
+            {{--TRAMOS--}}
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Tramos</h6>
                 </div>
                 <div class="card-body">
+                    <div class="mt-1 ml-1 mr-1">
+                        <table class="table table-bordered table-striped table-hover table-responsive-sm" id="tbltramos">
+                            <thead>
+                            <tr>
+                                <th>Descripcion</th>
+                                <th>Direccion Inicio</th>
+                                <th>Direccion Fin</th>
+                                <th>Metros (Ref)</th>
+                                <th>Supervisor</th>
+                                <th>Accion</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
                     <form id="frmsecciones">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="pl-lg-8">
@@ -139,13 +154,13 @@
                                 <div class="col-lg-6">
                                     <div class="form-group focused">
                                         <label class="form-control-label" for="fecha_ini">Fecha Inicio</label><span class="small text-danger">*</span></label>
-                                        <input type="date" id="fecha_ini" class="form-control" name="fecha_ini" placeholder="Fecha Inicial" value="{{$project->fecha_ini}}" disabled> {{-- //TODO deshabilitado si estado != 0 --}}
+                                        <input type="date" id="fecha_ini" class="form-control" name="fecha_ini" placeholder="Fecha Inicial" value="{{$project->fecha_ini}}" disabled>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="fecha_fin">Fecha Fin<span class="small text-danger">*</span></label>
-                                        <input type="date" id="fecha_fin" class="form-control" name="fecha_fin" placeholder="Fecha Final" value="{{$project->fecha_fin }}" disabled> {{-- //TODO deshabilitado si estado != 0 --}}
+                                        <input type="date" id="fecha_fin" class="form-control" name="fecha_fin" placeholder="Fecha Final" value="{{$project->fecha_fin }}" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -176,13 +191,13 @@
                                 <div class="col-lg-6">
                                     <div class="form-group focused">
                                         <label class="form-control-label" for="fecha_ini">Fecha Inicio</label><span class="small text-danger">*</span></label>
-                                        <input type="date" id="fecha_ini" class="form-control" name="fecha_ini" placeholder="Fecha Inicial" value="{{$project->fecha_ini}}" disabled> {{-- //TODO deshabilitado si estado != 0 --}}
+                                        <input type="date" id="fecha_ini" class="form-control" name="fecha_ini" placeholder="Fecha Inicial" value="{{$project->fecha_ini}}" disabled>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="fecha_fin">Fecha Fin<span class="small text-danger">*</span></label>
-                                        <input type="date" id="fecha_fin" class="form-control" name="fecha_fin" placeholder="Fecha Final" value="{{$project->fecha_fin }}" disabled> {{-- //TODO deshabilitado si estado != 0 --}}
+                                        <input type="date" id="fecha_fin" class="form-control" name="fecha_fin" placeholder="Fecha Final" value="{{$project->fecha_fin }}" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -214,13 +229,13 @@
                                 <div class="col-lg-6">
                                     <div class="form-group focused">
                                         <label class="form-control-label" for="fecha_ini">Fecha Inicio</label><span class="small text-danger">*</span></label>
-                                        <input type="date" id="fecha_ini" class="form-control" name="fecha_ini" placeholder="Fecha Inicial" value="{{$project->fecha_ini}}" disabled> {{-- //TODO deshabilitado si estado != 0 --}}
+                                        <input type="date" id="fecha_ini" class="form-control" name="fecha_ini" placeholder="Fecha Inicial" value="{{$project->fecha_ini}}" disabled>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="form-control-label" for="fecha_fin">Fecha Fin<span class="small text-danger">*</span></label>
-                                        <input type="date" id="fecha_fin" class="form-control" name="fecha_fin" placeholder="Fecha Final" value="{{$project->fecha_fin }}" disabled> {{-- //TODO deshabilitado si estado != 0 --}}
+                                        <input type="date" id="fecha_fin" class="form-control" name="fecha_fin" placeholder="Fecha Final" value="{{$project->fecha_fin }}" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -237,44 +252,83 @@
 
         </div>
     </div>
-
     {{--MATERIALES--}}
     <script>
         $(function () {
-
             var table = $('#tblmateriales').DataTable({
                 processing: true,
                 serverSide: true,
+                ajax:{
+                    url: "{{ url('projectmaterial/list',[$project->id]) }}",
+                    dataScr: "",
+                },
+                rowReorder: {
+                    selector: 'td:nth-child(2)'
+                },
                 responsive: true,
+                columns: [
+                    {data: 'codigo', name: 'codigo',},
+                    {data: 'descripcion', name: 'descripcion'},
+                    {data: 'cantidad', name: 'cantidad'},
+                    {
+                        data: 'Accion', name: 'Editar',
+                        orderable: false,
+                        searchable: false
+                    },
+                ],
+                language: {
+                    url: 'https://cdn.datatables.net/plug-ins/1.11.3/i18n/es-cl.json'
+                },
+                dom: 'Bfrtip',
+                buttons: {
+                    buttons: ['csv', 'excel', 'pdf']
+                },
+            });
+
+        });
+    </script>
+
+    <script>
+        $(function () {
+
+            var table2 = $('#tbltramos').DataTable({
+                processing: true,
+                serverSide: true,
                 ajax: {
-                        url: "{{route('projectmaterial.list')}}",
-                        data: {
-                            project_id: {{$project->id}},
-                        },
+                    url: "{{ url('section/list',[$project->id]) }}",
+                    dtataScr: ""
+                },
+                rowReorder: {
+                    selector: 'td:nth-child(2)'
+                },
+                responsive: true,
+                columns: [
+                    {data: 'descripcion', name: 'descripcion'},
+                    {data: 'direccion_inicio', name: 'direccion_inicio', },
+                    {data: 'direccion_termino', name: 'direccion_termino'},
+                    {data: 'metros_referenciales', name: 'metros_referenciales'},
+                    {data: 'supervisor', name: 'supervisor'},
+                    {
+                        data: 'action', name: 'action',
+                        orderable: false,
+                        searchable: false
                     },
-                    rowReorder: {
-                        selector: 'td:nth-child(2)'
-                    },
-                    columns: [
-                        {data: 'codigo', name: 'codigo', },
-                        {data: 'descripcion', name: 'descripcion'},
-                        {data: 'cantidad', name: 'cantidad'},
-                        {
-                            data: 'Accion', name: 'Editar',
-                            orderable: false,
-                            searchable: false
-                        },
-                    ],
-                    language: {
-                        url: 'https://cdn.datatables.net/plug-ins/1.11.3/i18n/es-cl.json'
-                    },
-                    dom: 'Bfrtip',
-                    buttons: {
-                        buttons: ['csv', 'excel', 'pdf', 'print', 'reset', 'reload']
-                    },
-                });
-        })
-            ;
+                ],
+                language: {
+                    url: 'https://cdn.datatables.net/plug-ins/1.11.3/i18n/es-cl.json'
+                },
+                dom: 'Bfrtip',
+                buttons: {
+                    buttons: ['csv', 'excel', 'pdf']
+                },
+            });
+            table2.on('xhr.dt', function ( e, settings, json, xhr ) {
+                console.log(e);
+                console.log(settings);
+                console.log(json);
+                console.log(xhr);
+            });
+        });
     </script>
 
 @endsection

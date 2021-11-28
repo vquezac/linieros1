@@ -46,7 +46,8 @@ class ProjectController extends Controller
                 })
                 ->addColumn('Accion', function($row){
                     $actionBtn = ' <a href="'.route('project.edit',[$row->id]).'" class="edit btn btn-success btn-sm">Editar</a> ';
-                    return $actionBtn;})
+                    return $actionBtn;}
+                )
                 ->rawColumns(['Accion'])
                 ->make(true);
         }
